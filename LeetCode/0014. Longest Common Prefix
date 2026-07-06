@@ -1,0 +1,74 @@
+# 0014. Longest Common Prefix
+
+**Problem Name:** Longest Common Prefix  
+**Difficulty:** Easy
+
+---
+
+## Question
+
+Write a function to find the **longest common prefix** string amongst an array of strings.
+
+If there is no common prefix, return an empty string `""`.
+
+---
+
+## My Solution
+
+```cpp
+class Solution {
+public:
+    string longestCommonPrefix(vector<string>& strs) {
+        if (strs.empty())
+            return "";
+
+        string prefix = strs[0];
+
+        for (int i = 1; i < strs.size(); i++) {
+            while (strs[i].find(prefix) != 0) {
+                prefix.pop_back();
+
+                if (prefix.empty())
+                    return "";
+            }
+        }
+
+        return prefix;
+    }
+};
+```
+
+---
+
+## Complexity
+
+| Metric | Value |
+|--------|-------|
+| **Time Complexity** | `O(n × m)` |
+| **Space Complexity** | `O(1)` |
+
+> Where:
+> - `n` = Number of strings
+> - `m` = Length of the longest common prefix
+
+---
+
+## What I Learned
+
+This problem helped me understand that I don't always need to compare every character of every string manually.
+
+Instead, I can assume the first string is the common prefix and keep reducing it until every other string starts with it. Using functions like `find()` and `pop_back()` makes the solution much simpler and easier to write.
+
+It also reinforced the idea of gradually narrowing down a possible answer instead of building one from scratch.
+
+---
+
+## Personal Notes
+
+At first, I thought about comparing characters one by one across all strings, but that approach felt more complicated. After learning this method, I realized that treating the first string as the initial answer and shrinking it whenever needed makes the code much cleaner.
+
+This problem also introduced me to a useful string-processing pattern that can be applied in many interview questions. Sometimes the simplest idea turns out to be the most efficient one.
+
+---
+
+**Status:** Solved ✅
