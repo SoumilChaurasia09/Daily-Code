@@ -1,0 +1,67 @@
+# 0026. Remove Duplicates from Sorted Array
+
+**Problem Name:** Remove Duplicates from Sorted Array  
+**Difficulty:** Easy
+
+---
+
+## Question
+
+Given a sorted integer array `nums`, remove the duplicates **in-place** such that each unique element appears only once. The relative order of the elements should remain the same.
+
+Return the number of unique elements `k`, where the first `k` elements of `nums` contain the unique values.
+
+---
+
+## My Solution
+
+```cpp
+class Solution {
+public:
+    int removeDuplicates(vector<int>& nums) {
+        int k = 1;
+
+        for (int i = 1; i < nums.size(); i++) {
+            if (nums[i] != nums[i - 1]) {
+                nums[k] = nums[i];
+                k++;
+            }
+        }
+
+        return k;
+    }
+};
+```
+
+---
+
+## Complexity
+
+| Metric | Value |
+|--------|-------|
+| **Time Complexity** | `O(n)` |
+| **Space Complexity** | `O(1)` |
+
+---
+
+## What I Learned
+
+This problem introduced me to the **Two Pointer** technique.
+
+Since the array is already sorted, duplicate elements are always adjacent. Instead of creating a new array, I can overwrite duplicate values by maintaining a pointer that tracks the position of the next unique element.
+
+This helped me understand how in-place array modifications work while keeping the space complexity constant.
+
+---
+
+## Personal Notes
+
+At first, I thought of using another array or a set to store unique values, but that would require extra space.
+
+The key observation was that the array is already sorted, making it possible to solve the problem efficiently with just two pointers.
+
+This problem reinforced an important lesson: **always use the properties of the input (like sorted order) to simplify the solution.**
+
+---
+
+**Status:** Solved ✅
