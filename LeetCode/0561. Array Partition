@@ -1,0 +1,65 @@
+# 0561. Array Partition
+
+**Problem Name:** Array Partition  
+**Difficulty:** Easy
+
+---
+
+## Question
+
+Given an integer array `nums` containing `2n` integers, group these integers into `n` pairs such that the sum of the minimum value in each pair is maximized.
+
+Return the maximum possible sum.
+
+---
+
+## My Solution
+
+```cpp
+class Solution {
+public:
+    int arrayPairSum(vector<int>& nums) {
+
+        sort(nums.begin(), nums.end());
+
+        int sum = 0;
+
+        for (int i = 0; i < nums.size(); i += 2) {
+            sum += nums[i];
+        }
+
+        return sum;
+    }
+};
+```
+
+---
+
+## Complexity
+
+| Metric | Value |
+|--------|-------|
+| **Time Complexity** | `O(n log n)` |
+| **Space Complexity** | `O(1)` *(Ignoring the space used by the sorting algorithm)* |
+
+---
+
+## What I Learned
+
+This problem taught me that sorting the array can simplify pairing problems.
+
+After sorting, pairing every two consecutive numbers ensures that the smaller element in each pair is as large as possible. Since the answer depends on the minimum element of every pair, adding every alternate element after sorting gives the maximum possible sum.
+
+---
+
+## Personal Notes
+
+At first, I tried thinking of different ways to create pairs, but it quickly became complicated because there are many possible combinations.
+
+The key observation was that sorting automatically creates the best pairs. Once the array is sorted, I only need to add the elements at even indices (`0, 2, 4, ...`).
+
+This problem reminded me that sometimes the simplest greedy approach becomes obvious after sorting the input.
+
+---
+
+**Status:** Solved ✅
